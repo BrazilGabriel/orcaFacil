@@ -1,0 +1,80 @@
+{
+  "projects": [
+    {
+      "id": "d968",
+      "name": "Site Fertec",
+      "budget": "100000",
+      "category": {
+        "id": "2",
+        "name": "Desenvolvimento"
+      },
+      "cost": 100000,
+      "services": [
+        {
+          "name": "Coleta de Requisitos",
+          "cost": "5000",
+          "description": "coleta de requisitos para desenvolvimento do site",
+          "id": "9c4b4e94-ef37-4aab-a1dc-6f796f761d94"
+        },
+        {
+          "name": "Aquisição de servidor",
+          "cost": "10000",
+          "description": "hospedagem do site",
+          "id": "30b485a2-baf5-4a8d-9d13-c12aa976cbe8"
+        },
+        {
+          "name": "devs",
+          "cost": "30000",
+          "description": "contratação de desenvolvedores",
+          "id": "f9b0f49e-8fc9-410a-b1a5-fbbc588e9c3d"
+        },
+        {
+          "name": "Designers",
+          "cost": "10000",
+          "description": "designer",
+          "id": "6090174f-ea75-4016-ab44-72edb17135be"
+        },
+        {
+          "name": "marketing",
+          "cost": "10000",
+          "description": "divulgação",
+          "id": "3e9ffcac-8c13-464d-8bca-ba415bfdd9b0"
+        },
+        {
+          "name": "festas de lançamentos",
+          "cost": "12000",
+          "id": "f7a11196-a1a5-422c-94f1-50114c499426"
+        },
+        {
+          "name": "manuntenção ",
+          "description": "custos de manutenção de 2 anos",
+          "cost": "20000",
+          "id": "0247d478-66ef-46b7-9ff2-3f782c03d2ab"
+        },
+        {
+          "name": "lanche",
+          "cost": "3000",
+          "id": "e9a0f7f9-9827-456f-8319-a9a5a2b5e38c"
+        }
+      ]
+    }
+  ],
+  "categories": [
+    {
+      "id": "1",
+      "name": "Infra"
+    },
+    {
+      "id": "2",
+      "name": "Desenvolvimento"
+    },
+    {
+      "id": "3",
+      "name": "Design"
+    },
+    {
+      "id": "4",
+      "name": "Planejamento"
+    }
+  ]
+}
