@@ -1,14 +1,14 @@
 import { FaFacebook, FaInstagram, FaLinkedin } from "react-icons/fa"
-import styles from "./Footer.module.css"
+
 function Footer() {
     return (
-        <footer className={styles.footer}>
-            <ul className={styles.social_list}>
-                <li><FaFacebook/></li>
-                <li><FaInstagram /></li>
-                <li><FaLinkedin /></li>
+        <footer className={`bg-slate-900 text-white p-12 text-center`}>
+            <ul className={` flex justify-center`}>
+                <li className="my-0 mx-4 hover:text-amber-400"><FaFacebook className="text-2xl cursor-pointer"/></li>
+                <li className="my-0 mx-4 hover:text-amber-400"><FaInstagram className="text-2xl cursor-pointer"/></li>
+                <li className="my-0 mx-4 hover:text-amber-400"><FaLinkedin className="text-2xl cursor-pointer"/></li>
             </ul>
-            <p className={styles.copy_right}><span>Costs</span>&copy; 2024</p>
+            <p className={`mt-8`}><span className="font-bold text-amber-400">Costs</span>&copy; 2024</p>
         </footer>
 
     )

@@ -1,10 +1,9 @@
-import styles from "./Select.module.css";
 
 function Select({ text, name, options, handleOnChange, value }) {
   return (
-    <div className={styles.form_control}>
-      <label htmlFor={name}>{text}</label>
-      <select
+    <div className="flex flex-col mb-4">
+      <label className="mb-2 font-bold" htmlFor={name}>{text}</label>
+      <select className="p-3 border border-white rounded-none"
         name={name}
         id={name}
         onChange={handleOnChange}

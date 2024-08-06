@@ -4,7 +4,6 @@ import Input from "../form/Input";
 import SubmitButton from "../form/SubmitButton";
 
 
-import styles from "../project/ProjectForm.module.css";
 
 function ServiceForm({ handleSubmit, btnText, projectData }) {
   const [service, setService] = useState([]);
@@ -20,7 +19,7 @@ function ServiceForm({ handleSubmit, btnText, projectData }) {
   }
 
   return (
-    <form onSubmit={submit} className={styles.form}>
+    <form onSubmit={submit} className="w-full my-8 mx-0">
       <Input
         type="text"
         text="Nome do serviço"

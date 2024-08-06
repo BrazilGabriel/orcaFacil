@@ -1,6 +1,5 @@
 import { parse, v4 as uuidv4 } from "uuid";
 
-import styles from "./Project.module.css";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Loading from "../layout/Loading";
@@ -141,28 +140,28 @@ function Project() {
   return (
     <>
       {project.name ? (
-        <div className={styles.project_details}>
+        <div className="p-8 w-full">
           <Container customClass="column">
             {message && <Message type={type} msg={message} />}
-            <div className={styles.details_container}>
-              <h1>Projeto: {project.name}</h1>
-              <button className={styles.btn} onClick={toggleProjectForm}>
+            <div className="border-b border-b-slate-700 mb-5 pb-5 flex justify-between flex-wrap">
+              <h1 className="mb-2 bg-slate-900 text-amber-400 p-2 text-3xl font-bold">Projeto: {project.name}</h1>
+              <button className="bg-slate-900 text-white py-2 px-4 cursor-pointer max-h-10 border-none transition duration-500 hover:text-amber-400" onClick={toggleProjectForm}>
                 {!showProjectForm ? "Editar projeto" : "Fechar"}
               </button>
               {!showProjectForm ? (
-                <div className={styles.project_info}>
-                  <p>
-                    <span>Categoria:</span> {project.category.name}
+                <div className="w-full">
+                  <p className="mb-2">
+                    <span className="font-bold">Categoria:</span> {project.category.name}
                   </p>
-                  <p>
-                    <span>Total de Orçamento:</span> R$ {project.budget}
+                  <p className="mb-2">
+                    <span className="font-bold">Total de Orçamento:</span> R$ {project.budget}
                   </p>
-                  <p>
-                    <span>Total Utilizado:</span> R$ {project.cost}
+                  <p className="mb-2">
+                    <span className="font-bold">Total Utilizado:</span> R$ {project.cost}
                   </p>
                 </div>
               ) : (
-                <div className={styles.project_info}>
+                <div className="w-full">
                   <ProjectForm
                     handleSubmit={editPost}
                     btnText="Concluir edição"
@@ -171,12 +170,12 @@ function Project() {
                 </div>
               )}
             </div>
-            <div className={styles.service_form_container}>
-              <h2>Adicione um serviço: </h2>
-              <button className={styles.btn} onClick={toggleServiceForm}>
+            <div className="border-b border-b-slate-700 mb-5 pb-5 flex justify-between flex-wrap">
+              <h2 className="mb-2 text-2xl font-bold">Adicione um serviço: </h2>
+              <button className="bg-slate-900 text-white py-2 px-4 cursor-pointer max-h-10 border-none transition duration-500 hover:text-amber-400" onClick={toggleServiceForm}>
                 {!showServiceForm ? "Adicionar serviço" : "Fechar"}
               </button>
-              <div className={styles.project_info}>
+              <div className="w-full">
                 {showServiceForm && (
                   <ServiceForm
                     handleSubmit={createService}
@@ -186,7 +185,7 @@ function Project() {
                 )}
               </div>
             </div>
-            <h2>Serviços</h2>
+            <h2 className="mb-2 text-2xl font-bold">Serviços</h2>
             <Container customClass="start">
               {services.length > 0 &&
                 services.map((service) => (
@@ -199,7 +198,7 @@ function Project() {
                     handleRemove={removeService}
                   />
                 ))}
-              {services.length === 0 && <p>Não há serviços cadastrados.</p>}
+              {services.length === 0 && <p className="mb-2">Não há serviços cadastrados.</p>}
             </Container>
           </Container>
         </div>

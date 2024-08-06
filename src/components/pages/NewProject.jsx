@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import ProjectForm from "../project/ProjectForm";
-import styles from "./NewProject.module.css";
+
 
 function NewProject() {
   const navigate = useNavigate();
@@ -29,9 +29,9 @@ function NewProject() {
   }
 
   return (
-    <div className={styles.newproject_container}>
-      <h1>Criar Projeto</h1>
-      <p>Crie seu projeto para depois adicionar os serviços</p>
+    <div className="min-w-96 my-0 mx-auto p-12">
+      <h1 className="mb-2 text-3xl font-bold">Criar Projeto</h1>
+      <p className="text-slate-600">Crie seu projeto para depois adicionar os serviços</p>
       <ProjectForm handleSubmit={createPost} btnText="Criar Projeto" />
     </div>
   );

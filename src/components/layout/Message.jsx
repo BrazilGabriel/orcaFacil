@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import styles from "./Message.module.css";
+
 function Message({ type, msg }) {
   const [visible, setVisible] = useState(false);
 
@@ -15,14 +15,19 @@ function Message({ type, msg }) {
       setVisible(false);
     }, 3000);
 
-    return () => clearTimeout(timer)
-
+    return () => clearTimeout(timer);
   }, [msg]);
 
   return (
     <>
       {visible && (
-        <div className={`${styles.message} ${styles[type]}`}>{msg}</div>
+        <div
+          className={`w-full p-4 border  border-slate-950 my-0 mx-auto text-center mb-2 rounded-md ${
+            type==="success" ? "text-green-950 bg-green-200 border-green-400" : "text-red-950 bg-red-200 border-red-300"
+          }`}
+        >
+          {msg}
+        </div>
       )}
     </>
   );

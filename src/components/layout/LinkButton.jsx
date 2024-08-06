@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
-import styles from "./LinkButton.module.css";
+
 
 function LinkButton({ to, text }) {
   return (
-    <Link className={styles.btn} to={to}>
+    <Link className={`bg-slate-900 text-white py-2 px-4 transition duration-500 hover:text-amber-400`} to={to}>
       {text}
     </Link>
   );
