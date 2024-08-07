@@ -1,11 +1,12 @@
 import { useLocation } from "react-router-dom";
-
+import folder from "../../img/folder.svg";
 import { useState, useEffect } from "react";
 import Message from "../layout/Message";
 import Loading from "../layout/Loading";
 import LinkButton from "../layout/LinkButton";
 import Container from "../layout/Container";
 import ProjectCard from "../project/ProjectCard";
+import EmptyPage from "../layout/EmptyPage";
 
 function Projects() {
   const port = import.meta.env.VITE_PORT;
@@ -32,10 +33,9 @@ function Projects() {
         .then((data) => {
           setProjects(data);
           setRemoveLoading(true);
-          console.log("loader removido");
         })
         .catch((err) => console.log(err));
-    }, 500);
+    }, 10);
   }, []);
 
   function removeProject(id) {
@@ -77,7 +77,7 @@ function Projects() {
             />
           ))}
         {!removeLoading && <Loading />}
-        {removeLoading && projects.length === 0 && <p>Não há projetos cadastrados</p>}
+        {removeLoading && projects.length === 0 && <EmptyPage displayImg={folder} displayImgAlt={"pasta vazia"} text={"Não há projetos cadastrados"}/>}
       </Container>
     </div>
   );

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import Input from "../form/Input";
+import InputNumber from "../form/InputNumber";
 import Select from "../form/Select";
 import SubmitButton from "../form/SubmitButton";
 
@@ -32,6 +33,10 @@ function ProjectForm({ handleSubmit, btnText, projectData }) {
     setProject({ ...project, [e.target.name]: e.target.value });
   }
 
+  function handleOnValueChange(values, {source, event}) {
+    setProject({ ...project, [event.target.name]: values.value });
+  }
+
   function handleCategory(e) {
     setProject({
       ...project,
@@ -52,14 +57,23 @@ function ProjectForm({ handleSubmit, btnText, projectData }) {
         handleOnChange={handleChange}
         value={project.name ? project.name : ""}
       />
-      <Input
+      {/* <Input
         type="number"
         text="Orçamento do projeto"
         name="budget"
         placeholder="Insira o orçamento total"
         handleOnChange={handleChange}
         value={project.budget ? project.budget : ""}
+      /> */}
+
+      <InputNumber
+        text="Orçamento do projeto"
+        name="budget"
+        placeholder="Insira o orçamento total"
+        handleOnChange={handleOnValueChange}
+        value={project.budget ? project.budget : ""}
       />
+
       <Select
         name="category_id"
         text="Selecione a categoria"

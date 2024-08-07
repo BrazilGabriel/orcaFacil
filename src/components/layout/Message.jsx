@@ -22,8 +22,8 @@ function Message({ type, msg }) {
     <>
       {visible && (
         <div
-          className={`w-full p-4 border  border-slate-950 my-0 mx-auto text-center mb-2 rounded-md ${
-            type==="success" ? "text-green-950 bg-green-200 border-green-400" : "text-red-950 bg-red-200 border-red-300"
+          className={`w-full p-4 border-2 my-0 mx-auto text-center text-white bg-slate-900 mb-2 rounded-md ${
+            type==="success" ? "border-emerald-600" : "border-rose-600"
           }`}
         >
           {msg}

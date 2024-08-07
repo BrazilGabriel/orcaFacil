@@ -5,7 +5,7 @@
     justify-content: space-between;
     margin: 0 auto;
     flex-wrap: wrap;
-    /* border: 1px solid red; */
+    container-type: inline-size;
 }
 
 .minHeight{
@@ -16,6 +16,15 @@
     justify-content:flex-start;
 }
 
+@container(max-width: 640px){
+    .start {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 1em;
+    }
+}
 .column{
     flex-direction: column;
     justify-content: flex-start;

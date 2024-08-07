@@ -1,4 +1,5 @@
 import { parse, v4 as uuidv4 } from "uuid";
+import { NumericFormat } from "react-number-format";
 
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
@@ -10,7 +11,7 @@ import ServiceForm from "../service/ServiceForm";
 import ServiceCard from "../service/ServiceCard";
 
 function Project() {
-  const port = import.meta.env.VITE_PORT;  
+  const port = import.meta.env.VITE_PORT;
   const { id } = useParams();
   const [project, setProject] = useState([]);
   const [services, setServices] = useState([]);
@@ -104,7 +105,7 @@ function Project() {
 
   function removeService(id, cost) {
     const port = import.meta.env.VITE_PORT;
-    setMessage("")
+    setMessage("");
     const servicesUpdated = project.services.filter(
       (service) => service.id !== id
     );
@@ -124,7 +125,7 @@ function Project() {
         setProject(projectUpdated);
         setServices(servicesUpdated);
         setMessage("Serviço removido com sucesso!");
-        setType("success")
+        setType("success");
       })
       .catch((err) => console.log(err));
   }
@@ -143,21 +144,41 @@ function Project() {
         <div className="p-8 w-full">
           <Container customClass="column">
             {message && <Message type={type} msg={message} />}
-            <div className="border-b border-b-slate-700 mb-5 pb-5 flex justify-between flex-wrap">
-              <h1 className="mb-2 bg-slate-900 text-amber-400 p-2 text-3xl font-bold">Projeto: {project.name}</h1>
-              <button className="bg-slate-900 text-white py-2 px-4 cursor-pointer max-h-10 border-none transition duration-500 hover:text-amber-400" onClick={toggleProjectForm}>
-                {!showProjectForm ? "Editar projeto" : "Fechar"}
+            <div className="border-b border-b-slate-700 mb-5 pb-5 flex justify-between flex-wrap items-center">
+              <h1 className="mb-2 text-indigo-500 p-2 text-3xl font-bold">
+                Projeto: {project.name}
+              </h1>
+              <button
+                className="bg-slate-950 text-white font-bold text-sm py-3 px-5 cursor-pointer rounded-md border border-white flex items-center justify-center transition duration-500 hover:bg-slate-900 hover:text-indigo-500"
+                onClick={toggleProjectForm}
+              >
+                {!showProjectForm ? "Editar projeto" : "Cancelar"}
               </button>
               {!showProjectForm ? (
                 <div className="w-full">
                   <p className="mb-2">
-                    <span className="font-bold">Categoria:</span> {project.category.name}
+                    <span className="font-bold">Categoria:</span>{" "}
+                    {project.category.name}
                   </p>
                   <p className="mb-2">
-                    <span className="font-bold">Total de Orçamento:</span> R$ {project.budget}
+                    <span className="font-bold">Total de Orçamento: </span>
+                    <NumericFormat
+                      displayType="text"
+                      value={project.budget}
+                      decimalSeparator=","
+                      prefix="R$ "
+                      thousandSeparator="."
+                    />
                   </p>
                   <p className="mb-2">
-                    <span className="font-bold">Total Utilizado:</span> R$ {project.cost}
+                    <span className="font-bold">Total Utilizado: </span>
+                    <NumericFormat
+                      displayType="text"
+                      value={project.cost}
+                      decimalSeparator=","
+                      prefix="R$ "
+                      thousandSeparator="."
+                    />
                   </p>
                 </div>
               ) : (
@@ -172,7 +193,10 @@ function Project() {
             </div>
             <div className="border-b border-b-slate-700 mb-5 pb-5 flex justify-between flex-wrap">
               <h2 className="mb-2 text-2xl font-bold">Adicione um serviço: </h2>
-              <button className="bg-slate-900 text-white py-2 px-4 cursor-pointer max-h-10 border-none transition duration-500 hover:text-amber-400" onClick={toggleServiceForm}>
+              <button
+                className="bg-slate-950 text-white font-bold text-sm py-3 px-5 cursor-pointer rounded-md border border-white flex items-center justify-center transition duration-500 hover:bg-slate-900 hover:text-indigo-500"
+                onClick={toggleServiceForm}
+              >
                 {!showServiceForm ? "Adicionar serviço" : "Fechar"}
               </button>
               <div className="w-full">
@@ -198,7 +222,9 @@ function Project() {
                     handleRemove={removeService}
                   />
                 ))}
-              {services.length === 0 && <p className="mb-2">Não há serviços cadastrados.</p>}
+              {services.length === 0 && (
+                <p className="mb-2">Não há serviços cadastrados.</p>
+              )}
             </Container>
           </Container>
         </div>
