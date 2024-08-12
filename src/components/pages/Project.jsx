@@ -34,7 +34,7 @@ function Project() {
           setServices(data.services);
         })
         .catch((err) => console.log(err));
-    }, 1000);
+    }, 100);
   }, [id]);
 
   function editPost(project) {
@@ -78,6 +78,13 @@ function Project() {
     //maximum value validation
     if (newCost > parseFloat(project.budget)) {
       setMessage("Orçamento ultrapassado, verifique o valor do serviço");
+      setType("error");
+      project.services.pop();
+      return false;
+    }
+
+    if (isNaN(newCost)) {
+      setMessage("O serviço precisa ter um valor");
       setType("error");
       project.services.pop();
       return false;
@@ -175,6 +182,16 @@ function Project() {
                     <NumericFormat
                       displayType="text"
                       value={project.cost}
+                      decimalSeparator=","
+                      prefix="R$ "
+                      thousandSeparator="."
+                    />
+                  </p>
+                  <p className="mb-2">
+                    <span className="font-bold">Valor disponível para uso: </span>
+                    <NumericFormat
+                      displayType="text"
+                      value={project.budget - project.cost}
                       decimalSeparator=","
                       prefix="R$ "
                       thousandSeparator="."
