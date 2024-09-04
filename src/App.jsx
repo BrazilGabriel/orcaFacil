@@ -7,8 +7,27 @@ import Container from "./components/layout/Container";
 import Navbar from "./components/layout/Navbar";
 import Footer from "./components/layout/Footer";
 import Project from "./components/pages/Project";
+import axios from "axios";
+
+const url = `https://custos-banco.onrender.com`; // Replace with your Render URL
+const interval = 900000; // Interval in milliseconds (30 seconds)
+
+function reloadWebsite() {
+  console.log("enviado")
+  axios.get(url)
+    .then(response => {
+      console.log(`Reloaded at ${new Date().toISOString()}: Status Code ${response.status}`);
+    })
+    .catch(error => {
+      console.error(`Error reloading at ${new Date().toISOString()}:`, error.message);
+    });
+}
+setInterval(reloadWebsite, interval);
+
+
 
 function App() {
+
   return (
     <Router>
       <Navbar />
